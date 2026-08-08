@@ -1,0 +1,531 @@
+/* ---------------- ROOT VARIABLES ---------------- */
+
+:root {
+  --border: #e5e7eb;
+  --border-accent: #c4b5fd;
+
+  --bg-secondary: #ffffff;
+
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+
+  --accent: #6B3AC2;
+  --accent-dim: #f3e8ff;
+
+  --radius: 12px;
+  --radius-sm: 8px;
+
+  --transition: all 0.3s ease;
+}
+
+/* ---------------- PAGE ---------------- */
+
+.resume-builder-page {
+  padding-bottom: 60px;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+/* ---------------- TOPBAR ---------------- */
+
+.rb-topbar {
+  /* 1. Positioning: Use fixed to stay at the very top of the viewport */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 72px; /* Set a specific height for consistency */
+  z-index: 1000; /* Ensure it stays above everything else */
+
+  /* 2. Layout */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32px; /* Removed vertical padding to control via height */
+  
+  /* 3. Styling */
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  
+  /* 4. Flexibility */
+  flex-wrap: nowrap; /* Usually better for topbars to prevent jumping */
+  gap: 16px;
+}
+
+/* 5. CRITICAL: Add a spacer to the top of your layout 
+   so the topbar doesn't cover your content */
+.rb-layout {
+  margin-top: 72px; 
+}
+
+.rb-topbar-left h1 {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.rb-topbar-left p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.rb-topbar-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ---------------- BUTTONS ---------------- */
+
+.btn {
+  padding: 10px 18px;
+
+  border: none;
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  font-weight: 600;
+  font-family: inherit;
+
+  transition: 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #6B3AC2;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #5a30a3;
+}
+
+.btn-secondary {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+.btn-secondary:hover {
+  background-color: #e5e7eb;
+}
+
+.btn-danger {
+  background-color: #ef4444;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #dc2626;
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+/* ---------------- LAYOUT ---------------- */
+
+.rb-layout {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+
+  min-height: calc(100vh - 170px);
+}
+
+.rb-layout.preview-only {
+  grid-template-columns: 1fr;
+}
+
+.rb-editor {
+  border-right: 1px solid var(--border);
+
+  display: flex;
+  flex-direction: column;
+
+  background: white;
+}
+
+/* ---------------- SECTION NAVIGATION ---------------- */
+
+.rb-sections-nav {
+  display: flex;
+  overflow-x: auto;
+
+  border-bottom: 1px solid var(--border);
+
+  padding: 12px 16px;
+  gap: 6px;
+
+  background: var(--bg-secondary);
+}
+
+.rb-nav-btn {
+  padding: 7px 14px;
+
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+
+  background: none;
+
+  color: var(--text-secondary);
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  font-family: inherit;
+
+  white-space: nowrap;
+
+  transition: var(--transition);
+}
+
+.rb-nav-btn:hover {
+  color: var(--text-primary);
+}
+
+.rb-nav-btn.active {
+  background: var(--accent-dim);
+
+  border-color: var(--border-accent);
+
+  color: var(--accent);
+}
+
+/* ---------------- FORM AREA ---------------- */
+
+.rb-form-area {
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* ---------------- FORM CONTROLS ---------------- */
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-label {
+  display: block;
+
+  margin-bottom: 6px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: var(--text-primary);
+}
+
+.form-control {
+  width: 100%;
+
+  padding: 12px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 8px;
+
+  outline: none;
+
+  font-size: 14px;
+
+  transition: 0.3s ease;
+
+  background: white;
+}
+
+.form-control:focus {
+  border-color: var(--accent);
+
+  box-shadow: 0 0 0 3px rgba(107, 58, 194, 0.15);
+}
+
+textarea.form-control {
+  resize: vertical;
+}
+
+/* ---------------- LIST FORMS ---------------- */
+
+.list-item-form {
+  background: var(--bg-secondary);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius);
+
+  padding: 20px;
+
+  margin-bottom: 16px;
+}
+
+.list-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 16px;
+}
+
+.list-item-header h4 {
+  font-size: 15px;
+  color: var(--accent);
+}
+
+.add-btn {
+  width: 100%;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 0 16px;
+}
+
+.form-grid .span-2 {
+  grid-column: span 2;
+}
+
+/* ---------------- PREVIEW PANEL ---------------- */
+
+.rb-preview-panel {
+  background: #e8e8e8;
+
+  padding: 30px;
+
+  overflow-y: auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.rb-preview-wrapper {
+  width: 100%;
+  max-width: 750px;
+}
+
+/* ---------------- RESUME PREVIEW ---------------- */
+
+.resume-preview {
+  background: white;
+  color: #1a1a2e;
+
+  padding: 48px 48px 40px;
+
+  font-family: "Plus Jakarta Sans", sans-serif;
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+
+  border-radius: 4px;
+
+  min-height: 1000px;
+}
+
+.rp-header {
+  border-bottom: 3px solid #6B3AC2;
+
+  padding-bottom: 20px;
+
+  margin-bottom: 24px;
+}
+
+.rp-name {
+  font-size: 32px;
+
+  color: #1a1a2e;
+
+  font-weight: 800;
+
+  letter-spacing: -1px;
+}
+
+.rp-contact {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 14px;
+
+  margin: 8px 0;
+
+  color: #555;
+
+  font-size: 12px;
+}
+
+.rp-summary {
+  color: #444;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+
+  margin-top: 10px;
+}
+
+.rp-section {
+  margin-bottom: 20px;
+}
+
+.rp-section-title {
+  font-size: 14px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 2px;
+
+  color: #6B3AC2;
+
+  margin-bottom: 12px;
+
+  font-weight: 800;
+}
+
+.rp-item {
+  margin-bottom: 14px;
+}
+
+.rp-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  margin-bottom: 4px;
+}
+
+.rp-item-title {
+  font-size: 14px;
+  font-weight: 700;
+
+  color: #1a1a2e;
+}
+
+.rp-item-sub {
+  font-size: 12px;
+
+  color: #666;
+
+  margin-top: 2px;
+}
+
+.rp-item-date {
+  font-size: 12px;
+
+  color: #888;
+
+  white-space: nowrap;
+}
+
+.rp-item-desc {
+  font-size: 12px;
+
+  color: #555;
+
+  line-height: 1.6;
+
+  margin-top: 4px;
+}
+
+.rp-techs {
+  font-size: 11px;
+
+  color: #6B3AC2;
+
+  margin-top: 2px;
+}
+
+.rp-link {
+  font-size: 12px;
+
+  color: #6B3AC2;
+
+  text-decoration: none;
+}
+
+.rp-skill-row {
+  display: flex;
+
+  gap: 8px;
+
+  margin-bottom: 6px;
+
+  font-size: 13px;
+
+  align-items: baseline;
+}
+
+.rp-skill-cat {
+  font-weight: 700;
+
+  color: #1a1a2e;
+
+  white-space: nowrap;
+
+  min-width: 120px;
+}
+
+.rp-skill-list {
+  color: #555;
+}
+
+/* ---------------- LOADING ---------------- */
+
+.loading-screen {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  width: 45px;
+  height: 45px;
+
+  border: 4px solid #e5e7eb;
+  border-top: 4px solid #6B3AC2;
+
+  border-radius: 50%;
+
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+
+@media (max-width: 900px) {
+  .rb-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .rb-editor {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .rb-preview-panel {
+    padding: 16px;
+  }
+
+  .resume-preview {
+    padding: 28px 24px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid .span-2 {
+    grid-column: span 1;
+  }
+}
